@@ -8,14 +8,7 @@ app.get('/', (req, res) => {
     res.send('Arithmetic service - Hello World!');
 });
 
-app.get('/add', (req, res) => {
-   
-    const num1 = req.query.num1; ;
-    const num2 = req.query.num2;
-    if (isNaN(num1) || isNaN(num2)) {
-        return res.status(400).json({ error: 'Invalid input. Please provide valid numbers.' });
-    }
-    const sum = parseFloat(num1) + parseFloat(num2);
-    res.json({ result: sum});
+app.get('/add/:n/:m', (req, res) => {
+    res.json(Number(req.params.n) + Number(req.params.m));
 });
 app.listen(port);
